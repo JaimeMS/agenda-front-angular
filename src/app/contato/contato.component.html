@@ -1,13 +1,13 @@
 <mat-toolbar>Contatos</mat-toolbar>
-<form>
+<form [formGroup]="formulario" (ngSubmit)="submit()">
     <mat-form-field class="full-width ">
         <mat-label>Nome: </mat-label>
-        <input matInput placeholder="Digite seu nome" />
+        <input formControlName="nome" matInput placeholder="Digite seu nome" />
     </mat-form-field>
 
     <mat-form-field class="full-width ">
         <mat-label>E-mail: </mat-label>
-        <input matInput placeholder="Digite seu e-mail" />
+        <input formControlName="email" matInput placeholder="Digite seu e-mail" />
     </mat-form-field>
 
     <button mat-button color="primary">Adicionar</button>

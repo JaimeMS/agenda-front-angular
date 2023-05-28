@@ -2,13 +2,26 @@
 <form [formGroup]="formulario" (ngSubmit)="submit()">
     <mat-form-field class="full-width ">
         <mat-label>Nome: </mat-label>
-        <input formControlName="nome" matInput placeholder="Digite seu nome" />
+        <input formControlName="nome" matInput placeholder="Digite seu nome" />        
     </mat-form-field>
-
+    <div *ngIf="formulario.controls['nome'].errors" >
+        <div *ngIf="formulario.controls['nome'].errors['required']">
+            Campo nome é obrigatório.
+        </div>
+    </div>
+    <br/>
     <mat-form-field class="full-width ">
         <mat-label>E-mail: </mat-label>
-        <input formControlName="email" matInput placeholder="Digite seu e-mail" />
+        <input formControlName="email" matInput placeholder="Digite seu e-mail" />        
     </mat-form-field>
-
-    <button mat-button color="primary">Adicionar</button>
+    <div *ngIf="formulario.controls['email'].errors" >
+        <div *ngIf="formulario.controls['email'].errors['email']">
+            Campo E-mail está inválido.
+        </div>
+        <div *ngIf="formulario.controls['email'].errors['required']">
+            Campo E-mail é obrigatório.
+        </div>
+    </div>
+   
+    <button [disabled]="!formulario.valid"  mat-button color="primary">Adicionar</button>
 </form>

@@ -62,6 +62,7 @@ export class ContatoComponent implements OnInit {
     const contato: Contato = new Contato(formValues.nome, formValues.email);
     this.service.save(contato).subscribe(resposta => {
       //... = sprad operator
+      //this.listarContatos();
       let lista: Contato[] = [... this.contatos, resposta];
       this.contatos = lista;
       this.snackBar.open('O contato foi adicionado', 'Sucesso!', {

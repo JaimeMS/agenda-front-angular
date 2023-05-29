@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { ContatoDetalheComponent } from '../contato-detalhe/contato-detalhe.component';
 import { PageEvent } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contato',
@@ -26,7 +27,8 @@ export class ContatoComponent implements OnInit {
   constructor(
     private service: ContatoService,
     private fb: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +38,8 @@ export class ContatoComponent implements OnInit {
 
   montarFormulario(){
     this.formulario = this.fb.group({
-      nome: ['nome', Validators.required],
-      email: ['email@email.com', [Validators.email, Validators.required]]
+      nome: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]]
     })
   }
 
@@ -62,6 +64,10 @@ export class ContatoComponent implements OnInit {
       //... = sprad operator
       let lista: Contato[] = [... this.contatos, resposta];
       this.contatos = lista;
+      this.snackBar.open('O contato foi adicionado', 'Sucesso!', {
+        duration: 2000
+      });
+      this.formulario.reset();
     })
   }
 

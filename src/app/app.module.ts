@@ -11,6 +11,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { ContatoDetalheComponent } from './contato-detalhe/contato-detalhe.compo
     MatIconModule,
     MatCardModule,
     MatDialogModule,
+    MatPaginatorModule,
     
     HttpClientModule,
     BrowserAnimationsModule
